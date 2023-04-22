@@ -1,5 +1,5 @@
 defmodule Http.Client do
-  @callback get(slug :: String.t()) :: {:ok, response :: map}
+  @behaviour Http.ClientBehaviour
 
   def get(slug) do
     HTTPoison.get("https://clube.netshoes.com.br/#{slug}")

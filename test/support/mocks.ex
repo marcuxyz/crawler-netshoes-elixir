@@ -1,1 +1,1 @@
-Mox.defmock(ClientMock, for: Http.Client)
+Mox.defmock(ClientMock, for: Http.ClientBehaviour)
