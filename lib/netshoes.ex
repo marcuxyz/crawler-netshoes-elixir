@@ -9,11 +9,9 @@ defmodule NetShoes do
     end
   end
 
-  def extract_title(html) do
+  defp extract_title(html) do
     html
-    |> Floki.find(
-      "#content > div:nth-child(3) > section > div.short-showcase-description > section > h1"
-    )
+    |> Floki.find("div.short-showcase-description > section > h1")
     |> Floki.text()
   end
 end
