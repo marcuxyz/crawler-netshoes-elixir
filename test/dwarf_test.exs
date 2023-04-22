@@ -17,6 +17,10 @@ defmodule DwarfTest do
        }}
     end)
 
-    assert NetShoes.get(slug) == %{title: "Tênis Fila Racer Carbon Masculino - Branco+Vermelho"}
+    assert NetShoes.get(slug) == %{
+             title: "Tênis Fila Racer Carbon Masculino - Branco+Vermelho",
+             original_price: "R$ 999,90",
+             price: "R$ 699,99"
+           }
   end
 end
