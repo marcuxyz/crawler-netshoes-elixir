@@ -28,7 +28,6 @@ defmodule Dwarf.MixProject do
   defp deps do
     [
       {:mox, "~> 1.0", only: :test},
-      {:poison, "~> 5.0"},
       {:floki, "~> 0.34.0"},
       {:httpoison, "~> 2.0"}
     ]
