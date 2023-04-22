@@ -5,8 +5,14 @@ defmodule NetShoes do
     with {:ok, response} <- @http_client.get(slug) do
       response
       |> Map.get(:body)
-      |> extract_title()
+      |> data()
     end
+  end
+
+  defp data(html) do
+    %{
+      title: extract_title(html)
+    }
   end
 
   defp extract_title(html) do

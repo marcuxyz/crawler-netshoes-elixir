@@ -17,6 +17,6 @@ defmodule DwarfTest do
        }}
     end)
 
-    assert NetShoes.get(slug) == "Tênis Fila Racer Carbon Masculino - Branco+Vermelho"
+    assert NetShoes.get(slug) == %{title: "Tênis Fila Racer Carbon Masculino - Branco+Vermelho"}
   end
 end
