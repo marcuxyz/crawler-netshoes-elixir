@@ -13,27 +13,15 @@ defmodule NetShoes do
 
   defp data(html) do
     %{
-      title: extract_title(html),
-      original_price: extract_original_price(html),
-      price: extract_price(html)
+      title: extract_product_information(html, "div.short-showcase-description > section > h1"),
+      original_price: extract_product_information(html, "div.price.price-box.mult-seller > del"),
+      price:
+        extract_product_information(
+          html,
+          "div.price.price-box.mult-seller > div > span:nth-child(1) > strong"
+        )
     }
   end
 
-  defp extract_title(html) do
-    html
-    |> Floki.find("div.short-showcase-description > section > h1")
-    |> Floki.text()
-  end
-
-  defp extract_original_price(html) do
-    html
-    |> Floki.find("div.price.price-box.mult-seller > del")
-    |> Floki.text()
-  end
-
-  defp extract_price(html) do
-    html
-    |> Floki.find("div.price.price-box.mult-seller > div > span:nth-child(1) > strong")
-    |> Floki.text()
-  end
+  defp extract_product_information(html, element), do: html |> Floki.find(element) |> Floki.text()
 end
