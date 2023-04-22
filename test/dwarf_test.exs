@@ -1,8 +1,22 @@
 defmodule DwarfTest do
-  use ExUnit.Case
-  doctest Dwarf
+  import Mox
 
-  test "greets the world" do
-    assert Dwarf.hello() == :world
+  use ExUnit.Case
+
+  setup :verify_on_exit!
+
+  test "must returns tênis fila racer carbon masculino - branco+vermelho" do
+    slug = "tenis-fila-racer-carbon-masculino-branco+vermelho-D29-8234-024"
+
+    ClientMock
+    |> expect(:get, fn ^slug ->
+      {:ok,
+       %HTTPoison.Response{
+         status_code: 200,
+         body: Path.join(["test", "fixtures", "racer_carbon.html"]) |> File.read!()
+       }}
+    end)
+
+    assert NetShoes.get(slug) == "Tênis Fila Racer Carbon Masculino - Branco+Vermelho"
   end
 end
