@@ -1,4 +1,6 @@
 defmodule NetShoes do
+  alias Http.Client
+
   @http_client Application.compile_env(:dwarf, :http_client, Client)
 
   def get(slug) do
@@ -33,13 +35,5 @@ defmodule NetShoes do
     html
     |> Floki.find("div.price.price-box.mult-seller > div > span:nth-child(1) > strong")
     |> Floki.text()
-  end
-end
-
-defmodule Client do
-  @callback get(slug :: String.t()) :: {:ok, response :: map}
-
-  def get(slug) do
-    HTTPoison.get("https://clube.netshoes.com.br/#{slug}")
   end
 end
